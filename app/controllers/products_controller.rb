@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :authenticate_user!, only: [:show, :create, :destroy]
   def index
     @products = current_user.products.all
   end
