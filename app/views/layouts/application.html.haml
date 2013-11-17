@@ -6,7 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .container
+    .container{:style => "margin-bottom: 300px"}
       .row.clearfix
         .col-md-12.column
           %nav.navbar.navbar-default{:role => "navigation"}
@@ -40,5 +40,9 @@
         - if alert
           %p.alert= alert
         = yield
+    .navbar.navbar-default.navbar-fixed-bottom
+      .container
+        %p.navbar-text.pull-left Site Built By Tomas Herrera
+        %a.navbar-btn.btn-danger.btn.pull-right{:href => "http://twitter.com/tomasherrera91"} Follow on Twitter
 
   = yield :javascript

@@ -1,2 +1,63 @@
-%h1 Products#show
-%p Find me in app/views/products/show.html.haml
+.row{:style => "margin-left: 15px"}
+  .col-md-6
+    %legend Main Picture
+    %img{:id => "blah", :class => "img-thumbnail", :src => @product.image_url}
+  .col-md-5
+    %h1= @product.title
+    %blockquote= @product.description
+    %h4
+      Price:
+      %span.label.label-primary= number_to_currency(@product.price, :unit => "$")
+    %h4
+      Avl Units:
+      %span.label.label-primary= @product.units
+    %a.btn.btn-primary.btn-sm{:href => "#"} Buy    
+    .fb-like{"data-action" => "like", "data-href" => "http://www.iarts.co", "data-layout" => "button_count", "data-share" => "true", "data-show-faces" => "true"}
+    %h5 Reputation: 97%
+%br
+.row{:style => "margin-left: 15px"}
+  %legend Comments and questions
+  %br
+  .col-md-8.column
+    .media
+      %a.pull-left{:href => "#"}
+        %img.media-object{:alt => "", :src => User.last.gravatar_url, :width => "64"}
+      .media-body
+        %h4.media-heading
+          Question about 
+          = @product.title
+        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+        .media
+          %a.pull-left{:href => "#"}
+            %img.media-object{:alt => "", :src => @product.user.gravatar_url, :width => "64"}/
+          .media-body
+            %h4.media-heading
+              Hi 
+              = current_user.full_name
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+    .media
+      %a.pull-left{:href => "#"}
+        %img.media-object{:alt => "", :src => "http://lorempixel.com/64/64/people", :width => "64"}
+      .media-body
+        %h4.media-heading
+          Question about 
+          = @product.title
+        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+        .media
+          %a.pull-left{:href => "#"}
+            %img.media-object{:alt => "", :src => @product.user.gravatar_url, :width => "64"}/
+          .media-body
+            %h4.media-heading
+              Hi Pedro
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+
+#fb-root
+  - content_for :javascript do
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=179015472295336";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));

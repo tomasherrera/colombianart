@@ -55,7 +55,7 @@
           %p
             = raw(product.description.truncate(200, :omission => "...#{link_to "show more", '#'}"))
           %div
-            %a.btn.btn-primary.btn-sm{:href => "#"} Show
+            = link_to "Show", product_path(product), :class => "btn btn-primary btn-sm"
             .fb-like{"data-action" => "like", "data-href" => "http://www.iarts.co", "data-layout" => "button_count", "data-share" => "true", "data-show-faces" => "true"}
 #fb-root
   - content_for :javascript do
