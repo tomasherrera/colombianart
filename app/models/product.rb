@@ -17,7 +17,7 @@
 class Product < ActiveRecord::Base
   attr_accessible :description, :image, :public, :title, :units, :price
 
-  validates_presence_of :description, :image, :public, :title, :units, :price
+  validates_presence_of :description, :image, :title, :units, :price
   mount_uploader :image, GravatarUploader
   belongs_to :user
 end
