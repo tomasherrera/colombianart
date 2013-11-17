@@ -34,7 +34,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :fname, :lname, :gravatar, :artisan
   mount_uploader :gravatar, GravatarUploader
-
+  validates_presence_of :email, :password, :password_confirmation, :remember_me, :fname, :lname, :gravatar, :artisan
+  
   has_many :products
   
   def full_name
