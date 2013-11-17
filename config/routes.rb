@@ -1,4 +1,6 @@
 Colombianart2::Application.routes.draw do
+  resources :products
+
   root to: "welcome#index"
 
   devise_for :users

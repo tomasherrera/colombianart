@@ -1,0 +1,17 @@
+.col-md-12.column
+  = link_to "+ Add Product", new_product_path, :class => "btn btn-primary"
+  .row
+    - @products.each do |product|
+      .col-md-4
+        .thumbnail
+          %img{:alt => "300x200", :src => product.image_url}/
+          .caption
+            %h3
+              = product.title
+            %p
+              = raw(product.description.truncate(200, :omission => "...#{link_to "show more", '#'}"))
+            %p
+              %h4 
+                %span.label.label-primary= number_to_currency(product.price, :unit => "$")
+                %span.label.label-info= "#{product.units} Avl Units"
+                %a.btn.btn-primary.btn-xs{:href => "#"} Show

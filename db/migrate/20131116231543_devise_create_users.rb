@@ -4,7 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
-      t.string :role, :null => false
+      t.boolean :artisan, :null => false
       t.string :fname
       t.string :lname
       t.string :address

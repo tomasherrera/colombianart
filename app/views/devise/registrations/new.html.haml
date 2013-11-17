@@ -1,0 +1,59 @@
+.row  
+  .col-md-8{:style => "margin-left: 15px"}
+    %legend Sign Up
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-horizontal"}) do |f|
+      = devise_error_messages!
+      .form-group
+        = f.label "First Name", :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :fname, :class => "form-control", :placeholder => "First Name"
+      .form-group
+        = f.label "Last Name", :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :lname, :class => "form-control", :placeholder => "Last Name"
+      .form-group
+        = f.label :email, :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => "Email", :type => "email"
+      .form-group
+        = f.label :password, :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.password_field :password, :class => "form-control", :placeholder => "Password", :type => "password"
+      .form-group
+        = f.label :password_confirmation, :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.password_field :password_confirmation, :class => "form-control", :placeholder => "Confirm Password", :type => "password"
+      .form-group
+        %label.col-sm-2.control-label Picture
+        .col-sm-10
+          = f.file_field :gravatar, :id => "imgInp"
+      .form-group
+        = f.label :artisan, :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.check_box :artisan
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          %button.btn.btn-primary{:type => "submit"} Sign Up
+  .col-md-3
+    %legend Profile Picture
+    %img{:id => "blah", :class => "img-thumbnail", :src => "http://www.isa-appraisers.org/content/images/placeholder.jpg"}
+
+- content_for :javascript do
+  :javascript
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              $('#blah').attr('src', e.target.result);
+          }
+
+          reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $(document).ready(function() {
+      $("#imgInp").change(function(){
+          readURL(this);
+      });
+    });

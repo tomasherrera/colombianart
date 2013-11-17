@@ -5,3 +5,11 @@
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
 Colombianart2::Application.config.secret_token = '6de3dd108f7afb1d21d713a08ec9e34d69ff4cc54acb77ca530b6fb3548f3129da593debdac75f787ff8a5ce0cebb8790ea3e57a4473edb0975a89d743058f51'
+CarrierWave.configure do |config|
+  config.fog_credentials = {
+    :provider               => 'AWS',                        # required
+    :aws_access_key_id      => 'AKIAJYWYKAUZYLTSDURQ',                        # required
+    :aws_secret_access_key  => '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',                        # required
+  }
+  config.fog_directory  = 'iart'                     # required
+end

@@ -1,0 +1,50 @@
+.row  
+  .col-md-7{:style => "margin-left: 15px"}
+    %legend New Product
+    = form_for(@product, :html => {:class => "form-horizontal", :multipart => true}) do |f|
+      .form-group
+        = f.label :title, :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :title, :autofocus => true, :class => "form-control", :placeholder => "Title"
+      .form-group
+        = f.label :description, :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_area :description, :class => "form-control", :placeholder => "Description", :rows => 5
+      .form-group
+        = f.label "Units Available", :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.number_field :units, :class => "form-control", :min => 0
+      .form-group
+        = f.label "Price in USD", :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.number_field :price, :class => "form-control", :min => 0
+      .form-group
+        %label.col-sm-2.control-label Main Picture
+        .col-sm-10
+          = f.file_field :image, :id => "imgInp"
+
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          %button.btn.btn-primary{:type => "submit"} Create Product
+  .col-md-3
+    %legend Main Picture
+    %img{:id => "blah", :class => "img-thumbnail", :src => "http://www.postmyarticle.net/articles/uploads/image_placeholder.jpg"}
+- content_for :javascript do
+  :javascript
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              $('#blah').attr('src', e.target.result);
+          }
+
+          reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $(document).ready(function() {
+      $("#imgInp").change(function(){
+          readURL(this);
+      });
+    });
