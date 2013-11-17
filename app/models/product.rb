@@ -15,9 +15,9 @@
 #
 
 class Product < ActiveRecord::Base
-  belongs_to :user
-  has_many :photos
   attr_accessible :description, :image, :public, :title, :units, :price
+
+  validates_presence_of :description, :image, :public, :title, :units, :price
   mount_uploader :image, GravatarUploader
-  accepts_nested_attributes_for :photos, :allow_destroy => true
+  belongs_to :user
 end

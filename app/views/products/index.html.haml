@@ -1,5 +1,6 @@
 .col-md-12.column
-  = link_to "+ Add Product", new_product_path, :class => "btn btn-primary"
+  .well
+    = link_to "+ Add Product", new_product_path, :class => "btn btn-primary btn-sm"
   .row
     - @products.each do |product|
       .col-md-4
@@ -15,3 +16,4 @@
                 %span.label.label-primary= number_to_currency(product.price, :unit => "$")
                 %span.label.label-info= "#{product.units} Avl Units"
                 %a.btn.btn-primary.btn-xs{:href => "#"} Show
+                = link_to "Delete", product_path(product), :confirm => "Are you sure?", :method=>:delete, :class => "btn btn-danger btn-xs"

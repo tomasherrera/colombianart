@@ -9,72 +9,61 @@
       %img.carro{:alt => "", :src => "http://www.espaciolila.com/wasanyaka/wp-content/uploads/2013/07/cabecera02.jpg"}/
       .carousel-caption
         %h4
-          First Thumbnail label
+          On the hand with paintings!
         %p
-          Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+          Handcrafting of the highest quality, painting on canvas, and on various materials carefully crafted by our artisans
     .item
       %img.carro{:alt => "", :src => "http://www.mediafire.com/convkey/dee1/wngf1m92n4nx8l9fg.jpg"}/
       .carousel-caption
         %h4
-          Second Thumbnail label
+          Working the bamboo!...
         %p
-          Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+          Cute vases and ornaments made in bamboo planted in our Colombian lands
     .item
       %img.carro{:alt => "", :src => "http://www.mediafire.com/convkey/5a7e/ai0n9qapd555h3zfg.jpg"}/
       .carousel-caption
         %h4
-          Third Thumbnail label
+          Cane painted arrow! ..
         %p
-          Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+          Handcrafts as centerpieces and decorations painted in arrow cane material, unique material and of the best queality in our country.
     .item
       %img.carro{:alt => "", :src => "http://www.mediafire.com/convkey/b985/exh8v6ihet7w0vvfg.jpg"}/
       .carousel-caption
         %h4
-          Third Thumbnail label
+          Weaving weaving!...
         %p
-          Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+          Cute hand woven bags in different techniques, different materials, from Coral thread to Wayuu thread, characteristic of this land.
   %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-750774"}
     %span.glyphicon.glyphicon-chevron-left
   %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-750774"}
     %span.glyphicon.glyphicon-chevron-right
 .jumbotron
   %h1
-    Hello, world!
+    iArts.Co
   %p
-    This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+    The platform for you to get the Colombian typical handicraft, where you will know about the different jobs of our craftsmen ... and even better: You will be able to get any of our creations!.
   %p
     %a.btn.btn-primary.btn-large{:href => "#"} Learn more
 .row
-  .col-md-4
-    .thumbnail
-      %img{:alt => "300x200", :src => "http://lorempixel.com/600/200/people"}/
-      .caption
-        %h3
-          Thumbnail label
-        %p
-          Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        %p
-          %a.btn.btn-primary{:href => "#"} Action
-          %a.btn{:href => "#"} Action
-  .col-md-4
-    .thumbnail
-      %img{:alt => "300x200", :src => "http://lorempixel.com/600/200/city"}/
-      .caption
-        %h3
-          Thumbnail label
-        %p
-          Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        %p
-          %a.btn.btn-primary{:href => "#"} Action
-          %a.btn{:href => "#"} Action
-  .col-md-4
-    .thumbnail
-      %img{:alt => "300x200", :src => "http://lorempixel.com/600/200/sports"}/
-      .caption
-        %h3
-          Thumbnail label
-        %p
-          Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        %p
-          %a.btn.btn-primary{:href => "#"} Action
-          %a.btn{:href => "#"} Action
+  - @products.each do |product|
+    .col-md-4
+      .thumbnail
+        %img{:alt => product.title, :src => product.image_url}/
+        .caption
+          %h3
+            = product.title
+          %p
+            = raw(product.description.truncate(200, :omission => "...#{link_to "show more", '#'}"))
+          %div
+            %a.btn.btn-primary.btn-sm{:href => "#"} Show
+            .fb-like{"data-action" => "like", "data-href" => "http://www.iarts.co", "data-layout" => "button_count", "data-share" => "true", "data-show-faces" => "true"}
+#fb-root
+  - content_for :javascript do
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=179015472295336";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));

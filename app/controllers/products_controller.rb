@@ -27,5 +27,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find params[:id]
+    if @product.destroy
+      redirect_to products_path, :notice => "Product successfully deleted"
+    else
+      render action: "index", alert: "Errors ocurred while deleting"
+    end 
   end
 end
